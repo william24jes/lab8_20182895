@@ -29,7 +29,7 @@ public class Evento {
     @Column(name = "path_image", length = 100)
     private String pathImage;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "idLocal", nullable = false)
     private Local idLocal;
 

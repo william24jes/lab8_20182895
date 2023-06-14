@@ -14,11 +14,11 @@ public class Ticket {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "idTipoTicket", nullable = false)
     private TipoTicketEvento idTipoTicket;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne( optional = false)
     @JoinColumn(name = "idUsuario", nullable = false)
     private Usuario idUsuario;
 

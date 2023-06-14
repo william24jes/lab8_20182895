@@ -23,7 +23,7 @@ public class Local {
     @Column(name = "longitud", length = 45)
     private String longitud;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "idEmpresa", nullable = false)
     private Empresa idEmpresa;
 

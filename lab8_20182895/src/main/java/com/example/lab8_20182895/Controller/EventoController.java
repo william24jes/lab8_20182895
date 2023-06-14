@@ -52,16 +52,23 @@ public class EventoController {
         responseJson.put("result","failure");
         return ResponseEntity.badRequest().body(responseJson);
     }
-    @PostMapping(value = "/crear")
+    @PostMapping(value = "")
     public ResponseEntity<HashMap<String,Object>> crearEvento(
             @RequestBody Evento evento,
             @RequestParam (value = "fetchId",required = false) boolean fetchId){
         HashMap<String,Object> responseMap = new HashMap<>();
         eventoRepository.save(evento);
-        if (fetchId){
-            responseMap.put("id creado", evento.getId());
+        if (fetchId==true ){
+            responseMap.put("estado", "creado");
+            responseMap.put("id", evento.getId());
+            return ResponseEntity.status(HttpStatus.CREATED).body(responseMap);
+        }else if (fetchId==false){
+            responseMap.put("estado", "creado");
+            return ResponseEntity.status(HttpStatus.CREATED).body(responseMap);
+        }else{
+            responseMap.put("msg", "Debe enviar un evento");
+            responseMap.put("estado", "error");
         }
-        responseMap.put("id_creado",evento.getId());
         return ResponseEntity.status(HttpStatus.CREATED).body(responseMap);
     }
 
